@@ -16,6 +16,7 @@ if exists("b:current_syntax")
         finish
 endif
 
+syn match   wikiWord        "\<[A-Z][^A-Z ]\+[A-Z][^A-Z ][^A-Z ]*\>"
 syn match   wikiLine        "^----$"
 syn region  wikiLink        start="\[" end="\]"
 syn match   wikiStar        "[*]"
@@ -31,6 +32,8 @@ hi def link wikiCurly       Statement
 hi def link wikiStar        String
 hi def link wikiLink        Comment
 hi def link wikiLine        PreProc
+hi def link wikiWord        Comment
+
   
 let b:current_syntax = "wiki"
 
