@@ -3,12 +3,9 @@
 " Maintainer:   Andreas Kneib <aporia@web.de>
 " Improved By:  Mathias Panzenböck <grosser.meister.morti@gmx.at>
 " Last Change:  2003 Aug 05
-"
-" Description:  Little syntax file to use a wiki-editor with VIM
-"               (if your browser allow this action)
-"
-" Credits:      Mathias Panzenböck for several good improvements.
-"
+
+" Little syntax file to use a wiki-editor with VIM
+" (if your browser allow this action) 
 " To use this syntax file:
 " 1. mkdir ~/.vim/syntax
 " 2. mv ~/wiki.vim ~/.vim/syntax/wiki.vim
@@ -30,8 +27,12 @@ endif
 
 syn match   wikiWord        "\<[A-Z][^A-Z ]\+[A-Z][^A-Z ][^A-Z ]*\>"
 syn match   wikiLine        "^----$"
-syn region  wikiExtLink     start=+\([^\[]\|^\)\[[^\[]+hs=s+1 end=+[^\]]\]\([^\]\|$]\)+he=e-1
-syn region  wikiLink        start=+\([^\[]\|^\)\[\[[^\[]+hs=s+1 end=+[^\]]\]\]\([^\]\|$]\)+he=e-1
+syn region  wikiLink        start=+\[+hs=s+1 end=+\]+he=e-1
+
+"" This RegEx don't work very well. But I'm to clueless, to make it better. ;)
+"syn region  wikiExtLink     start=+\([^\[]\|^\)\[[^\[]+hs=s+1 end=+[^\]]\]\([^\]\|$]\)+he=e-1
+"syn region  wikiLink        start=+\([^\[]\|^\)\[\[[^\[]+hs=s+1 end=+[^\]]\]\]\([^\]\|$]\)+he=e-1
+
 syn match   wikiStar        "[*]"
 syn region  wikiCurly       start="{\{3\}" end="}\{3\}"
 syn region  wikiHead        start="^= " end="[=] *"
@@ -70,5 +71,7 @@ delcommand WikiHiLink
 let b:current_syntax = "wiki"
 
 "EOF vim: tw=78:ft=vim:ts=8
+
+
 
 
